@@ -18,7 +18,11 @@ class SudokuController extends Controller
       return Sudoku::orderBy('created_at')->with('user')->get();
     }
 
-    // Show all sudoku a user hasn't solved
+    /**
+     * Display a listing of the sudokus user hasn't solve yet.
+     * @param Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function indexNotSolved(Request $request)
     {
       $user_id = $request->user()->id;
@@ -38,9 +42,9 @@ class SudokuController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created Sudoku in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Requests\SudokuRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(SudokuRequest $request)
@@ -73,7 +77,8 @@ class SudokuController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Sudoku  $sudoku
+     * @param  Illuminate\Http\Request $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request, $id)
@@ -82,7 +87,12 @@ class SudokuController extends Controller
       return $sudoku;
     }
 
-    //return the solved requested sudoku
+    /**
+     * Solve the requested puzzle
+     *
+     * @param  \App\Sudoku  $sudoku
+     * @return \Illuminate\Http\Response
+     */
     public function solve(Request $request, $id)
     {
       $sudoku = Sudoku::with('user')->find($id);
