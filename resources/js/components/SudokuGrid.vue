@@ -384,6 +384,7 @@ table	td {
 		text-align: center;
 		font-size: 2em;
     width: 5vw;
+    min-height: 1vh;
 }
 
 table	td:nth-child(3),
