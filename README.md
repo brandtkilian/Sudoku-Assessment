@@ -8,7 +8,7 @@ Main dependencies:
 * VueJS 2.5.22
 * Bootstrap 4.2.1
 
-## Project structures
+## Project structure
 The project follows the classical Laravel framework structures, the dependencies are manages with Composer. The front-end pages developed with VueJS are under `resources\js` here you can find:
 * `components/` the VueJS components
 * `layouts/` the defaults layout in where pages are loaded
