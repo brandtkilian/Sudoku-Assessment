@@ -2,7 +2,7 @@
   <div>
       <div>
         <h1>Play the sudoku game</h1>
-        <SudokuGrid v-if="sudoku" :default="sudoku.grid" :isCreationMode="false"/>
+        <SudokuGrid v-if="sudoku" :default="sudoku.grid" :isCreationMode="false" :id="sudoku.id"/>
       </div>
   </div>
 </template>
@@ -31,6 +31,7 @@ export default {
       axios.get(`/api/sudokus/${this.$route.params.id}`)
       .then(response => {
         this.sudoku = response.data;
+        console.log(this.sudoku.grid);
       })
       .catch(e => {
         console.error(e);

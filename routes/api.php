@@ -22,7 +22,8 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('createsudoku', 'SudokuController@store');
     Route::post('validate', 'SolveController@store')->middleware('alreadysolved');
     Route::get('sudokus', 'SudokuController@indexNotSolved');
-    Route::get('sudokus/{id}', 'SudokuController@show')->where('id','[0-9]+')->middleware('alreadysolved');;
+    Route::get('sudokus/{id}', 'SudokuController@show')->where('id','[0-9]+')->middleware('alreadysolved');
+    Route::get('answer/{id}', 'SudokuController@solve')->where('id','[0-9]+');
     Route::get('solves', 'SolveController@indexCount');
 });
 

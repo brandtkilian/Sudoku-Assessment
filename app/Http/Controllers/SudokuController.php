@@ -81,6 +81,19 @@ class SudokuController extends Controller
       return $sudoku;
     }
 
+    //return the solved requested sudoku
+    public function solve(Request $request, $id)
+    {
+      $sudoku = Sudoku::with('user')->find($id);
+      if($sudoku)
+      {
+        $grid = $sudoku->solve($sudoku->grid);
+        $sudoku->grid = $grid;
+        return $sudoku;
+      }
+      return response()->json(["errors" => ["grid" => ["The sudoku you are asking the solution for is not found"]]], 404);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

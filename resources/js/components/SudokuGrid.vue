@@ -112,7 +112,8 @@
     </div>
     <nav>
       <button v-on:click="clear()">Clear</button>
-      <button v-on:click="submit()">Submit</button>
+      <button v-if="!hasAskedAnswer" v-on:click="submit()">Submit</button>
+      <button v-if="!isCreationMode" v-on:click="askAnswer()">Answer</button>
     </nav>
   </div>
 </template>
@@ -139,6 +140,13 @@ export default {
       }
   },
 
+  watch: {
+    default: function(val)
+    {
+      this.applyPuzzle(this.default);
+    }
+  },
+
   props: {
     default: { default: function() { return [ // 0 == empty cell
       	[0,0,0,0,0,0,0,0,0],
@@ -152,10 +160,12 @@ export default {
       	[0,0,0,0,0,0,0,0,0]
       ]; } },
     isCreationMode: { default: true },
+    id: 0,
   },
 
   data: () => ({
     gridError: "",
+    hasAskedAnswer: false,
   }),
 
   methods: {
@@ -290,7 +300,7 @@ export default {
         if (errors.hasOwnProperty(property)) {
           if(property.includes('.')){
             let split = property.split('.');
-            this.gridError.push(`Row ${parseInt(split[1])+1}, Col ${parseInt(split[2])+1} ${errors[property].split(' ').slice(0,2).join(' ')}`);
+            this.gridError.push(`Row ${parseInt(split[1])+1}, Col ${parseInt(split[2])+1} ${errors[property][0].split(' ').slice(2, 100).join(' ')}`);
           }
           else if(errors[property].wrongcells)
           {
@@ -312,7 +322,7 @@ export default {
       axios.post('/api/createsudoku/', {
         grid: puzzle
       }).then(res => {
-        //redirect to sudokus list
+        this.$router.push({name: "sudokus"});
       }).catch(err => {
         //in case of failure
         var errors = err.response.data.errors;
@@ -333,6 +343,14 @@ export default {
         var errors = err.response.data.errors;
         this.processErrors(errors)
       });
+    },
+
+    askAnswer()
+    {
+      this.hasAskedAnswer = true;
+      axios.get(`/api/answer/${this.id}`).then(resp => {
+        this.applyPuzzle(resp.data.grid);
+      }).catch(err => console.error(err));
     }
   },
 
