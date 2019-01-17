@@ -37,7 +37,7 @@ export default {
 
   methods: {
     fetchSudokus(){
-      axios.get('/api/sudokus/')
+      axios.get('/api/sudokus')
       .then(response => {
         this.sudokus = response.data;
       })

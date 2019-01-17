@@ -1,11 +1,20 @@
-# Sudoku-Assessment
-Small web app as an Assessment for a web-dev position
+# Sudoku App
+
+This is my Sudoku Gaia test submission.
 
 ## Dependencies
 Main dependencies:
 * Laravel Framework 5.7
 * VueJS 2.5.22
 * Bootstrap 4.2.1
+
+## Project structures
+The project follows the classical Laravel framework structures, the dependencies are manages with Composer. The front-end pages developed with VueJS are under `resources\js` here you can find:
+* `components/` the VueJS components
+* `layouts/` the defaults layout in where pages are loaded
+* `pages` the main web application pages that make use of components
+
+The JS dependencies are manages by npm. All the dependencies descriptors files are up in the repository.
 
 ## Installation
 
@@ -43,7 +52,7 @@ I removed the email field required to create an account and make the login proce
 The sudoku is the key part of this app. All sudoku grids are represented as a 2D array (in PHP as well as in JSON), the array can contains value between "0" and "9" where "0" means it's a blank cell.
 
 #### 2.1 Frontend
-In the frontend I used a codepen code sample with a HTML table (contenteditable) and some javascript function. I put and adapted this code into a VueJS component that I can reuse in any of my views. The component supports requests with axios library to fetch a sudoku, submit a proposed solution, submit a proposed new grid.
+In the frontend I used a [codepen](https://codepen.io/kamblack/pen/zmqgoO) code sample with a HTML table (contenteditable) and some javascript function. I put and adapted this code into a VueJS component that I can reuse in any of my views. The component supports requests with axios library to fetch a sudoku, submit a proposed solution, submit a proposed new grid.
 
 All the errors are returned by the backend as JSON. When errors concern faulty values in a grid (regarding the sudoku rules) the backend returns an array with the rows/colums and subgrids and the values to highlight. Highligting of faulty values helps users to figure out where are their mistakes.
 
@@ -63,7 +72,7 @@ After the format of the grid checked, the grid is checked. In the case where a u
 1. Check if any rule is violated (no duplicata in no row, column or subgrid 3x3)
 2. Check if the grid has a solution using backtracking.
 
-The Backtracking algorithm is an algorithm that acts like a bruteforce, given a grid state it will discover every numbers that can be fill in any blank cell without violate any rule. Starting from the cell with the minimum of possible possibilities (the less possible number can be fill in a blank cell, the more confident we are about the correctness). If many possibilities exists it will call the function recursively creating a recursive call for each scenario. If the gris is full then we have a solution and the grid is solvable. If the recursive calls stops before an end and we cannot find any other cell in which a number can be put then the grid is not solvable.
+The [Backtracking algorithm](https://en.wikipedia.org/wiki/Sudoku_solving_algorithms) is an algorithm that acts like a bruteforce, given a grid state it will discover every numbers that can be fill in any blank cell without violate any rule. Starting from the cell with the minimum of possible possibilities (the less possible number can be fill in a blank cell, the more confident we are about the correctness). If many possibilities exists it will call the function recursively creating a recursive call for each scenario. If the gris is full then we have a solution and the grid is solvable. If the recursive calls stops before an end and we cannot find any other cell in which a number can be put then the grid is not solvable.
 
 All the code to check the state of a grid and check the solvability is carried in the `App\Sudoku.php` Eloquent model class.
 

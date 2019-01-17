@@ -319,7 +319,7 @@ export default {
     saveSudoku() {
       let puzzle = this.fetchPuzzleFromTable(); // get puzzle from html table
       //post asynchronously
-      axios.post('/api/createsudoku/', {
+      axios.post('/api/createsudoku', {
         grid: puzzle
       }).then(res => {
         this.$router.push({name: "sudokus"});
@@ -333,7 +333,7 @@ export default {
     validateSolution()
     {
       let puzzle = this.fetchPuzzleFromTable(); // get puzzle from html table
-      axios.post('/api/validate/', {
+      axios.post('/api/validate', {
         id: this.$route.params.id,
         grid: puzzle
       }).then(res => {
