@@ -38,7 +38,8 @@ class SolveController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
+     * Make verifications if the proposed grid is correct
+     * If correct, save the solve to increase the user's ranking
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */

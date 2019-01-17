@@ -18,6 +18,7 @@ class SudokuController extends Controller
       return Sudoku::orderBy('created_at')->with('user')->get();
     }
 
+    // Show all sudoku a user hasn't solved
     public function indexNotSolved(Request $request)
     {
       $user_id = $request->user()->id;

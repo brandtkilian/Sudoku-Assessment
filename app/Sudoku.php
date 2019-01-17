@@ -68,6 +68,12 @@ class Sudoku extends Model
 
     // PUBLIC METHODS
 
+    /**
+   * Check if a grid violates any of the sudoku rules
+   *
+   * @param  array  $grid
+   * @return bool isConsistent
+   */
     public function checkCurrentState($grid, &$errors)
     {
       $success = false;
@@ -106,6 +112,12 @@ class Sudoku extends Model
     }
 
 
+    /**
+   * Solves a sudoku using the BackTracking algorithm with recursive calls
+   * Partialy inspired by https://github.com/kirilkirkov/Sudoku-Solver
+   * @param  array  $grid
+   * @return array solved grid or false if not solvable
+   */
     public function solve($grid)
     {
       while(true)
@@ -161,6 +173,12 @@ class Sudoku extends Model
       }
     }
 
+    /**
+   * Compare current object grid with another one to validate it's the same
+   *
+   * @param  array  $grid
+   * @return bool isIdentical
+   */
     public function compareSubmission($grid)
     {
       //we want to know if the submission matches with the sudoku
@@ -175,7 +193,11 @@ class Sudoku extends Model
       return $result;
     }
 
-
+    /**
+   * Tells if a grid is fully filled or not
+   * Containing the 9th sub grids
+   * @return bool isFull
+   */
     public function isFull()
     {
       // to check weither there remains empty cells or not in the sudoku
@@ -190,6 +212,13 @@ class Sudoku extends Model
     }
 
     // PROTECTED/PRIVATE METHODS
+
+    /**
+   * From the 2D array (rows) of a grid returns a 2D array of array of length 9
+   * Containing the 9th sub grids
+   * @param  array  $grid
+   * @return array subgrids 2D array
+   */
     protected function getSubgrids($grid, &$success)
     {
       $subgrids = [];
@@ -222,6 +251,12 @@ class Sudoku extends Model
       return $subgrids;
     }
 
+    /**
+     * From the 2D array (rows) of a grid returns a 2D array of columns
+     *
+     * @param  array  $grid
+     * @return array columns
+     */
     protected function getColumns($grid)
     {
       $columns = [];
@@ -235,6 +270,12 @@ class Sudoku extends Model
       return $columns;
     }
 
+    /**
+     * From the 2D array (rows) of a grid returns a 2D array of the two diagonals
+     *  unusued because not X sudoku game
+     * @param  array  $grid
+     * @return array columns
+     */
     protected function getDiagonals($grid)
     {
       $first_diag = [];
@@ -248,6 +289,13 @@ class Sudoku extends Model
       return [$first_diag, $second_diag];
     }
 
+    /**
+     * From the associative array containing counts of individuals values
+     * outputs the index and number that is faulty
+     *  unusued because not X sudoku game
+     * @param  array  $countings
+     * @return array errors
+     */
     protected function getErrorReport($countings)
     {
       $errors = [];
@@ -261,6 +309,13 @@ class Sudoku extends Model
       return $errors;
     }
 
+    /**
+     * Returns all possible numbers possible without violating rules of sudoku for a cell
+     *  unusued because not X sudoku game
+     * @param  int  $row is the row index
+     * @param  int  $col is the col index
+     * @return array possibilities
+     */
     protected function getPossibilities($row, $col)
     {
       $subgrid_size = $this::GRID_SIZE / 3;
