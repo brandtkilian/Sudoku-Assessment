@@ -1,6 +1,7 @@
 # Sudoku App
 
 This is my Sudoku Gaia test submission.
+
 Host: http://sudokuapp-env.mnseug88n8.eu-central-1.elasticbeanstalk.com/
 
 ## Dependencies
