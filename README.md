@@ -45,7 +45,8 @@ I'm using VueJS as my main front-end framework, VueJS is really convenient to wo
 Content-type: `application/json`
 
 Register a new user.
-required fields:
+
+Required fields:
 * `nick_name`: String (alphanumeric)
 * `password`: String
 * `password_confirmation`: String
@@ -88,7 +89,8 @@ Occurs when backend can't validate data.
 ### `/api/login` [HTTP POST]
 Content-type: `application/json`
 
-Log in an existing  user
+Log in an existing  user.
+
 Required fields:
 * `nick_name`: String (alphanumeric) 
 * `password`: String
@@ -113,7 +115,7 @@ Required fields:
 
 Occurs when backend can't authenticate user.
 
-**Example of response `422 Unprocessable Entity`**
+Example of response `422 Unprocessable Entity`
 ```
 {
     "message":"The given data was invalid.",
@@ -150,7 +152,7 @@ Content-type: `application/json`
 
 Returns the list of all sudokus a logged user hasn't solved yet. The author of the grid is appended to the sudoku in order to display author name and information on the frontend.
 
-**Example of request response:**
+Example of request response:
 ```[{
     "id":1,
     "user_id":1,
@@ -171,6 +173,7 @@ Returns the list of all sudokus a logged user hasn't solved yet. The author of t
 Content-type: `application/json`
 
 Stores a new sudoku.
+
 Required fields:
 * `grid`: Array (9x9 array of integers)
 
@@ -200,6 +203,7 @@ Required fields:
 ```
 
 **Errors `422 Unprocessable Entity`:** Occurs when the request is invalid or the grid is incomplete/unsolvable
+
 Example of response 1:
 ```
 {
@@ -209,6 +213,7 @@ Example of response 1:
     }
 }
 ```
+
 Example of response 2:
 ```
 {
@@ -291,6 +296,7 @@ The user in the returned JSON is the author.
 Content-type: `application/json`
 
 Validate a given sudoku puzzle (check if full, and in a valid state).
+
 Required fields:
 * `id`: Integer (id of the sudoku grid)
 * `grid`: Array (9x9 array of integers)
