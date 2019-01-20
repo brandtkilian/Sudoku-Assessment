@@ -31,7 +31,6 @@ export default {
       axios.get(`/api/sudokus/${this.$route.params.id}`)
       .then(response => {
         this.sudoku = response.data;
-        console.log(this.sudoku.grid);
       })
       .catch(e => {
         this.$router.push({name: "sudokus"});

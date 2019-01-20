@@ -14,3 +14,6 @@ yarn-error.log
 /public/css
 /public/mix-manifest.json
 phpunit.dusk.xml
+.ebextensions/
+config/database-dev.php
+

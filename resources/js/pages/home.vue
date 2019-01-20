@@ -8,8 +8,6 @@
 
 <script>
 export default {
-  middleware: 'auth',
-
   computed: {
     user () {
       return this.$store.user;
