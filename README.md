@@ -495,3 +495,9 @@ To ensure that a user will not solve multiple times the same sudoku I set up a M
 * Adapt score from difficulty (if difficulty exists)
 * Logs the use of the "Autocomplete" function so that a user cannot cheat and solve like this
 * Allow user to save a not finished yet grid and continue later
+
+## Known issues
+
+* Impossible to retype values after asking for "answer" and then "clear" while solving a sudoku without refreshing
+* Strange error appearing only in production `SyntaxError: expected expression, got '<'` in manifest.js and vendor.js
+    * tried some of solutions here https://github.com/vuejs-templates/pwa/issues/165 without success
