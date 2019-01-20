@@ -235,7 +235,7 @@ The `wrongcells` object contains for each row/colum/subgrid the id of the row/co
 ### `/api/sudokus/{id}` [HTTP DELETE]
 Content-type: `application/json`
 
-Deletes a sudoku given it's `{id}` (in the URI)
+Deletes a sudoku given it's `{id}` (in the route)
 **Response `200 OK`:** Returns "1" for success "0" for failure
 
 ### `/api/user/sudokus/` [HTTP GET]
@@ -260,7 +260,7 @@ Example of response:
 ### `/api/sudokus/{id}` [HTTP GET]
 Content-type: `application/json`
 
-Returns a sudoku grid given it's `{id}` (in URI)
+Returns a sudoku grid given it's `{id}` (in route)
 
 **Response `200 OK`:**
 
@@ -385,7 +385,7 @@ It gives which grid cell `grid.[row].[col]` contains non integer.
 ### `/api/answer/{id}` [HTTP GET]
 Content-type: `application/json`
 
-Return the answer for a given sudoku puzzle given its `{id}` (in URI)
+Return the answer for a given sudoku puzzle given its `{id}` (in route)
 
 **Response `200 OK`:** Returns the solution
 
