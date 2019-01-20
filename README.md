@@ -8,7 +8,7 @@ Main dependencies:
 * VueJS 2.5.22
 * Bootstrap 4.2.1
 
-## Project structures
+## Project structure
 The project follows the classical Laravel framework structures, the dependencies are manages with Composer. The front-end pages developed with VueJS are under `resources\js` here you can find:
 * `components/` the VueJS components
 * `layouts/` the defaults layout in where pages are loaded
@@ -23,10 +23,10 @@ To install this application on your local environment follow the following steps
 2. Edit the copy the `.env.example` file into `.env`and edit with your configuration
 4. Ensure that you have PHP 7, Composer and npm installed
 4. In the root folder of the project run
-4.1 `composer update` to install the php dependencies required by the project
-4.2 `npm install` to install the JS dependencies
-4.3 `php artisan key:generate` to generate the App Key
-4.4 `php artisan jwt:secret` To generate the JSON web Token key used for API auth
+    1. `composer update` to install the php dependencies required by the project
+    2. `npm install` to install the JS dependencies
+    3. `php artisan key:generate` to generate the App Key
+    4. `php artisan jwt:secret` To generate the JSON web Token key used for API auth
 4. create an empty mysql database
 5. edit the copy the `.env` file with your database connection infos
 6. run `php artisan migrate --seed`
