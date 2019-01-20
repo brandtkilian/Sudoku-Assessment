@@ -18,13 +18,26 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware' => 'auth:api'], function () {
-    Route::post('logout', 'Auth\LoginController@logout');
-    Route::post('createsudoku', 'SudokuController@store');
-    Route::post('validate', 'SolveController@store')->middleware('alreadysolved');
-    Route::get('sudokus', 'SudokuController@indexNotSolved');
-    Route::get('sudokus/{id}', 'SudokuController@show')->where('id','[0-9]+')->middleware('alreadysolved');
-    Route::get('answer/{id}', 'SudokuController@solve')->where('id','[0-9]+');
-    Route::get('solves', 'SolveController@indexCount');
+  //logout route
+  Route::post('logout', 'Auth\LoginController@logout');
+
+  // get list of yet unsolved sudokus
+  Route::get('sudokus', 'SudokuController@indexNotSolved');
+  //add a sudoku
+  Route::post('sudokus', 'SudokuController@store');
+  //delete a sudoku
+  Route::delete('sudokus/{id}', 'SudokuController@destroy')->where('id','[0-9]+')->middleware('ownsudoku'); // allowed if user owns the sudoku
+  // get the users sudokus
+  Route::get('user/sudokus', 'SudokuController@indexUser');
+  // get one specific sudoku
+  Route::get('sudokus/{id}', 'SudokuController@show')->where('id','[0-9]+')->middleware('alreadysolved');
+
+  //validate a solution
+  Route::post('validate', 'SolveController@store')->middleware('alreadysolved'); // protected to avoir solve of multiple sudokus
+  // get the answer of a specific sudoku
+  Route::get('answer/{id}', 'SudokuController@solve')->where('id','[0-9]+');
+  // get the solves count of all users for ranking
+  Route::get('solves', 'SolveController@indexCount');
 });
 
 

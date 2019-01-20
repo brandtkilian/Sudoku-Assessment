@@ -16,7 +16,7 @@ class CreateSudokusTable extends Migration
         Schema::create('sudokus', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('name', 50)->unique();
             $table->string('grid');
             $table->timestamps();

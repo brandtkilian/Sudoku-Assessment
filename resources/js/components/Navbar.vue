@@ -4,16 +4,17 @@
       <div class="navbar-header">
         <a class="navbar-brand" href="/home">Brandt's Sudokus</a>
       </div>
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-justified">
         <li><a v-if="!user" href="/login">Login</a></li>
         <li><a v-if="!user" href="/register">Register</a></li>
-        <li><a v-if="user" href="#" @click.prevent="logout">Logout</a></li>
         <li><a v-if="user" href="/create">Create Sudoku</a></li>
+        <li><a v-if="user" href="/mysudokus">My Sudokus</a></li>
         <li><a v-if="user" href="/sudokus">Play Sudoku</a></li>
         <li><a v-if="user" href="/ranking">Ranking</a></li>
+        <li><a v-if="user" href="#" @click.prevent="logout">Logout</a></li>
       </ul>
-  </div>
-</nav>
+    </div>
+  </nav>
 </template>
 
 <script>
@@ -42,3 +43,9 @@ export default {
   }
 }
 </script>
+<style scope>
+nav li {
+   display: inline-block;
+   padding: 10px 10px;
+}
+</style>

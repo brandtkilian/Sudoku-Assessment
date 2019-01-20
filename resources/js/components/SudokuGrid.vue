@@ -111,9 +111,9 @@
       </ul>
     </div>
     <nav>
-      <button v-on:click="clear()">Clear</button>
-      <button v-if="!hasAskedAnswer" v-on:click="submit()">Submit</button>
-      <button v-if="!isCreationMode" v-on:click="askAnswer()">Answer</button>
+      <button class="btn btn-primary" v-on:click="clear()">Clear</button>
+      <button class="btn btn-primary" v-if="!hasAskedAnswer" v-on:click="submit()">Submit</button>
+      <button class="btn btn-primary" v-if="!isCreationMode" v-on:click="askAnswer()">Answer</button>
     </nav>
   </div>
 </template>
@@ -319,7 +319,7 @@ export default {
     saveSudoku() {
       let puzzle = this.fetchPuzzleFromTable(); // get puzzle from html table
       //post asynchronously
-      axios.post('/api/createsudoku', {
+      axios.post('/api/sudokus', {
         grid: puzzle
       }).then(res => {
         this.$router.push({name: "sudokus"});
@@ -364,7 +364,7 @@ export default {
 .sudoku {
 	justify-content: center;
 	align-items: center;
-	height: 45vh;
+	height: 45vw;
 	width: 45vw;
 	margin: 0;
 	font-family: Verdana, sans-serif;
@@ -380,14 +380,13 @@ table {
 	margin-bottom: 15px;
 }
 table	td {
-		border: 1px solid black;
-		text-align: center;
-		font-size: 2em;
-    width: 5vw;
+	border: 1px solid black;
+	text-align: center;
+	font-size: 2em;
+  width: 11%; height: 11%;
 }
 table tr {
-  height: 5vh;
-  max-height: 5vh;
+  height: 11%;
 }
 
 table	td:nth-child(3),

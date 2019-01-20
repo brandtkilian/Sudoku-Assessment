@@ -48,10 +48,11 @@ class SolveController extends Controller
       $id = $request->id; // frontend supposed to send the sudoku_id
       $source_sudoku = Sudoku::find($id);
 
+      //Source sudoku exists
       if($source_sudoku)
       {
-        $user = $request->user();
-        $sudoku = new Sudoku($request->except('id'));
+        $user = $request->user(); // route protected by auth middleware ensure a user is in request
+        $sudoku = new Sudoku($request->except('id')); // create a sudoku in order to use solving methods
         //Ensure that user is solving an existing sudoku
         $errors = [];
         if($source_sudoku->compareSubmission($sudoku->grid, $errors))

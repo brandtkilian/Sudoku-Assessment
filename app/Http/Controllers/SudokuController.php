@@ -19,6 +19,17 @@ class SudokuController extends Controller
     }
 
     /**
+     * Display a listing of the sudoku of the current logged user
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexUser(Request $request)
+    {
+      $user_id = $request->user()->id;
+      return Sudoku::where('user_id', $user_id)->orderBy('created_at')->get();
+    }
+
+    /**
      * Display a listing of the sudokus user hasn't solve yet.
      * @param Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
@@ -83,7 +94,7 @@ class SudokuController extends Controller
      */
     public function show(Request $request, $id)
     {
-      $sudoku = Sudoku::with('user')->find($id);
+      $sudoku = Sudoku::with('user')->findOrFail($id);
       return $sudoku;
     }
 
@@ -134,8 +145,8 @@ class SudokuController extends Controller
      * @param  \App\Sudoku  $sudoku
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sudoku $sudoku)
+    public function destroy(Request $request, $id)
     {
-        //
+      return Sudoku::destroy($id);
     }
 }

@@ -46,8 +46,7 @@ class Sudoku extends Model
       parent::__construct($attributes);
       if(count($attributes) > 0)
       {
-        $success = false;
-        $this->subgrids = $this->getSubgrids($this->grid, $success);
+        $this->subgrids = $this->getSubgrids($this->grid);
         $this->cols = $this->getColumns($this->grid);
         //$this->diagonals = $this->getDiagonals($this->grid);
       }
@@ -219,27 +218,15 @@ class Sudoku extends Model
    * @param  array  $grid
    * @return array subgrids 2D array
    */
-    protected function getSubgrids($grid, &$success)
+    protected function getSubgrids($grid)
     {
       $subgrids = [];
-      $n_rows = count($grid);
-      if ($n_rows != $this::GRID_SIZE){
-        $success = false;
-        return null;
-      }
       $subgrid_size = $this::GRID_SIZE / 3;
 
       //iterate each row
       for($i = 0; $i < $this::GRID_SIZE; $i++)
       {
         $row_num = (int)($i / $subgrid_size);
-        // check row size
-        if(count($grid[$i]) != $this::GRID_SIZE)
-        {
-          $success = false;
-          return null;
-        }
-
         //iterate each column
         for($j = 0; $j < $this::GRID_SIZE; $j++)
         {
@@ -247,7 +234,6 @@ class Sudoku extends Model
           $subgrids[$row_num][$col_num][] = $grid[$i][$j];
         }
       }
-      $success = true;
       return $subgrids;
     }
 

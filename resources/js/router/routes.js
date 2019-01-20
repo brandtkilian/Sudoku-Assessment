@@ -5,6 +5,7 @@ import CreateSudoku from '@/js/pages/createsudoku';
 import Sudokus from '@/js/pages/sudokus';
 import Play from '@/js/pages/play';
 import Ranking from '@/js/pages/ranking';
+import MySudokus from '@/js/pages/mysudokus';
 
 
 export default [
@@ -16,4 +17,5 @@ export default [
     { path: '/sudokus', name: 'sudokus', component: Sudokus },
     { path: '/sudokus/:id', name: 'playsudokus', component: Play },
     { path: '/ranking', name: 'ranking', component: Ranking },
+    { path: '/mysudokus', name: 'mysudokus', component: MySudokus },
 ]

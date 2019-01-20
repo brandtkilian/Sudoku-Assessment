@@ -34,6 +34,7 @@ export default {
         console.log(this.sudoku.grid);
       })
       .catch(e => {
+        this.$router.push({name: "sudokus"});
         console.error(e);
       });
     }
