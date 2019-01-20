@@ -130,6 +130,8 @@ Example of response `422 Unprocessable Entity`
 ### `/api/user` [HTTP GET]
 Content-type: `application/json`
 
+Restricted to authenticated users.
+
 Returns the current logged user (used by frontend)
 
 **Example of request response:**
@@ -144,6 +146,8 @@ Returns the current logged user (used by frontend)
 
 ### `/api/logout` [HTTP POST]
 Content-type: `application/json`
+
+Restricted to authenticated users.
 
 Logs out the user.
 Returns `204 No Content` if successful
@@ -172,6 +176,8 @@ Example of request response:
 
 ### `/api/sudokus` [HTTP POST]
 Content-type: `application/json`
+
+Restricted to authenticated users.
 
 Stores a new sudoku.
 
@@ -235,6 +241,9 @@ The `wrongcells` object contains for each row/colum/subgrid the id of the row/co
 ### `/api/sudokus/{id}` [HTTP DELETE]
 Content-type: `application/json`
 
+Restricted to authenticated users.
+A middleware ensures a user can delete only his own sudokus.
+
 Deletes a sudoku given it's `{id}` (in the route)
 **Response `200 OK`:** Returns "1" for success "0" for failure
 
@@ -259,6 +268,8 @@ Example of response:
 ```
 ### `/api/sudokus/{id}` [HTTP GET]
 Content-type: `application/json`
+
+Restricted to authenticated users.
 
 Returns a sudoku grid given it's `{id}` (in route)
 
@@ -295,6 +306,9 @@ The user in the returned JSON is the author.
 
 ### `/api/validate/` [HTTP POST]
 Content-type: `application/json`
+
+Restricted to authenticated users.
+A middleware ensures a user can't send a solve twice for the same sudoku grid.
 
 Validate a given sudoku puzzle (check if full, and in a valid state).
 
@@ -385,6 +399,8 @@ It gives which grid cell `grid.[row].[col]` contains non integer.
 ### `/api/answer/{id}` [HTTP GET]
 Content-type: `application/json`
 
+Restricted to authenticated users.
+
 Return the answer for a given sudoku puzzle given its `{id}` (in route)
 
 **Response `200 OK`:** Returns the solution
@@ -410,6 +426,8 @@ Example of response:
 
 ### `/api/solves/` [HTTP GET]
 Content-type: `application/json`
+
+Restricted to authenticated users.
 
 Returns the number of solves for each users sorted (Descending) to display the ranking page.
 
