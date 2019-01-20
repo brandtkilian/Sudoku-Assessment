@@ -37,7 +37,6 @@ This app proposes a simple register/login system and two interfaces that allows 
 
 All the datas are coming from an API using JSON and the frontend is designed as a SinglePageApplication, the components are switch using Vue-Router in a default layout page. Authencation is accomplished using JWT-Auth.
 
-## About the code
 I'm using VueJS as my main front-end framework, VueJS is really convenient to work with JSON Data coming from APIs, it is reactive to any change and JSON can directly be used to generate the differents components content display. Since it is a SPA application, all the routes are in the routes/api.php file and all the content is transmitted using JSON format.
 
 ## REST API specifications
@@ -60,6 +59,7 @@ required fields:
 }
 ```
 **Response `201 Created`:** Returns the created user without hidden fields (password)
+
 ```
 {
   "nick_name":"user",
@@ -71,8 +71,11 @@ required fields:
 The user is automatically logged by the backend if the registration is succesfull (`201 Created`)
 
 **Errors `422 Unprocessable Entity`:**
+
 Occurs when backend can't validate data.
+
 **Example of response `422 Unprocessable Entity`**
+
 ```
 {
   "message":"The given data was invalid.",
@@ -97,6 +100,7 @@ Required fields:
     "password":"test1234"
 }
 ```
+
 **Response `200 Ok`:** Logs the user, creates a JWT-Auth token
 ```
 {
@@ -106,7 +110,9 @@ Required fields:
 }
 ```
 **Errors `422 Unprocessable Entity`:**
+
 Occurs when backend can't authenticate user.
+
 **Example of response `422 Unprocessable Entity`**
 ```
 {
@@ -122,6 +128,7 @@ Occurs when backend can't authenticate user.
 Content-type: `application/json`
 
 Returns the current logged user (used by frontend)
+
 **Example of request response:**
 ```
 {
@@ -142,6 +149,7 @@ Returns `204 No Content` if successful
 Content-type: `application/json`
 
 Returns the list of all sudokus a logged user hasn't solved yet. The author of the grid is appended to the sudoku in order to display author name and information on the frontend.
+
 **Example of request response:**
 ```[{
     "id":1,
@@ -166,7 +174,7 @@ Stores a new sudoku.
 Required fields:
 * `grid`: Array (9x9 array of integers)
 
-Example of request content:
+**Example of request content:**
 ```
 {
     "grid":[[1,0,0,4,8,9,0,0,6],[7,3,0,0,0,0,0,4,0],[0,0,0,0,0,1,2,9,5],[0,0,7,1,2,0,6,0,0],[5,0,0,7,0,3,0,0,8],[0,0,6,0,9,5,7,0,0],[9,1,4,6,0,0,0,0,0],[0,2,0,0,0,0,0,3,7],[8,0,0,5,1,2,0,0,4]]
@@ -230,6 +238,7 @@ Content-type: `application/json`
 Returns the list of the current user sudokus.
 
 **Response `200 OK`:**
+
 Example of response:
 
 ```
@@ -248,6 +257,7 @@ Content-type: `application/json`
 Returns a sudoku grid given it's `{id}` (in URI)
 
 **Response `200 OK`:**
+
 Example of response:
 ```
 {
@@ -270,6 +280,7 @@ Example of response:
 The user in the returned JSON is the author.
 
 **Response `404 Not Found`:**
+
 ```
 {
     "message": "No query results for model [App\\Sudoku] 123"
@@ -293,6 +304,7 @@ Required fields:
 ```
 
 **Response `200 OK`:** The grid is valid
+
 Example of response containing the solve records the user and the sudoku solved record:
 ```
 {
@@ -321,6 +333,7 @@ Example of response containing the solve records the user and the sudoku solved 
 ```
 
 **Errors `422 Unprocessable Entity`:** Occurs when the the grid is incomplete or the solution is false
+
 Example of response 1:
 ```
 {
@@ -368,6 +381,7 @@ Content-type: `application/json`
 Return the answer for a given sudoku puzzle given its `{id}` (in URI)
 
 **Response `200 OK`:** Returns the solution
+
 Example of response:
 ```
 {
