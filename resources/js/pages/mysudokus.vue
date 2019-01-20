@@ -8,8 +8,8 @@
           </tr>
           <tr v-for="sud in sudokus">
             <td><a :href="`/sudokus/${sud.id}`" alt="play the sudoku">{{ sud.name }}</a></td>
-            <td>{{sud.name}}</td>
-            <td><a class="btn btn-danger" href="#" v-on:click="deleteSudoku(sud.id)" alt="Delete the sudoku">Delete</a></td>
+            <td>{{sud.created_at}}</td>
+            <td><button class="btn btn-danger" v-on:click="deleteSudoku(sud.id)" alt="Delete the sudoku">Delete</button></td>
           </tr>
         </table>
       </div>
