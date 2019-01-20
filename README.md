@@ -16,7 +16,7 @@ The project follows the classical Laravel framework structures, the dependencies
 * `layouts/` the defaults layout in where pages are loaded
 * `pages` the main web application pages that make use of components
 
-The JS dependencies are manages by npm. All the dependencies descriptors files are up in the repository.
+The JS dependencies are manages by npm. All the dependencies descriptors files are in the repository.
 
 ## Installation
 
