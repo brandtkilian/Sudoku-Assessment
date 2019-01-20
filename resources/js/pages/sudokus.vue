@@ -9,7 +9,7 @@
           <tr v-for="sud in sudokus">
             <td><a :href="`/sudokus/${sud.id}`" alt="play the sudoku">{{ sud.name }}</a></td>
             <td>{{sud.user.nick_name}}</td>
-            <td>{{sud.user.created_at}}</td>
+            <td>{{sud.created_at}}</td>
           </tr>
         </table>
       </div>
