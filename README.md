@@ -42,7 +42,7 @@ I'm using VueJS as my main front-end framework, VueJS is really convenient to wo
 
 ## REST API specifications
 
-#### `/api/register` [HTTP POST]
+### `/api/register` [HTTP POST]
 Content-type: `application/json`
 
 Register a new user.
@@ -82,7 +82,7 @@ Occurs when backend can't validate data.
   }
 }
 ```
-#### `/api/login` [HTTP POST]
+### `/api/login` [HTTP POST]
 Content-type: `application/json`
 
 Log in an existing  user
@@ -118,7 +118,7 @@ Occurs when backend can't authenticate user.
 }
 ```
 
-#### `/api/user` [HTTP GET]
+### `/api/user` [HTTP GET]
 Content-type: `application/json`
 
 Returns the current logged user (used by frontend)
@@ -132,13 +132,13 @@ Returns the current logged user (used by frontend)
 }
 ```
 
-#### `/api/logout` [HTTP POST]
+### `/api/logout` [HTTP POST]
 Content-type: `application/json`
 
 Logs out the user.
 Returns `204 No Content` if successful
 
-#### `/api/sudokus` [HTTP GET]
+### `/api/sudokus` [HTTP GET]
 Content-type: `application/json`
 
 Returns the list of all sudokus a logged user hasn't solved yet. The author of the grid is appended to the sudoku in order to display author name and information on the frontend.
@@ -159,7 +159,7 @@ Returns the list of all sudokus a logged user hasn't solved yet. The author of t
 }]
 ```
 
-#### `/api/sudokus` [HTTP POST]
+### `/api/sudokus` [HTTP POST]
 Content-type: `application/json`
 
 Stores a new sudoku.
@@ -218,13 +218,13 @@ Example of response 2:
 
 The `wrongcells` object contains for each row/colum/subgrid the id of the row/colum/subgrid and the value of the number in a faulty state. `"rows":[[0,1]]` means that the number '1' in the row with index '0' is in a faulty state. The frontend can then highlight with a simple loop the faulty numbers.
 
-#### `/api/sudokus/{id}` [HTTP DELETE]
+### `/api/sudokus/{id}` [HTTP DELETE]
 Content-type: `application/json`
 
 Deletes a sudoku given it's `{id}` (in the URI)
 **Response `200 OK`:** Returns "1" for success "0" for failure
 
-#### `/api/user/sudokus/` [HTTP GET]
+### `/api/user/sudokus/` [HTTP GET]
 Content-type: `application/json`
 
 Returns the list of the current user sudokus.
@@ -242,7 +242,7 @@ Example of response:
     "updated_at":"2019-01-20 18:52:52"
 }]
 ```
-#### `/api/sudokus/{id}` [HTTP GET]
+### `/api/sudokus/{id}` [HTTP GET]
 Content-type: `application/json`
 
 Returns a sudoku grid given it's `{id}` (in URI)
@@ -276,7 +276,7 @@ The user in the returned JSON is the author.
 }
 ```
 
-#### `/api/validate/` [HTTP POST]
+### `/api/validate/` [HTTP POST]
 Content-type: `application/json`
 
 Validate a given sudoku puzzle (check if full, and in a valid state).
@@ -362,7 +362,7 @@ Example of response 3:
 ```
 It gives which grid cell `grid.[row].[col]` contains non integer.
 
-#### `/api/answer/{id}` [HTTP GET]
+### `/api/answer/{id}` [HTTP GET]
 Content-type: `application/json`
 
 Return the answer for a given sudoku puzzle given its `{id}` (in URI)
@@ -387,7 +387,7 @@ Example of response:
 }
 ```
 
-#### `/api/solves/` [HTTP GET]
+### `/api/solves/` [HTTP GET]
 Content-type: `application/json`
 
 Returns the number of solves for each users sorted (Descending) to display the ranking page.
@@ -446,7 +446,7 @@ After the format of the grid checked (size and data types), the grid state is ch
 
 The [Backtracking algorithm](https://en.wikipedia.org/wiki/Sudoku_solving_algorithms) is an algorithm that acts like a bruteforce, given a grid state it will discover every numbers that can be fill in any blank cell without violate any rule. Starting from the cell with the minimum of possible moves (the less possible numbers can be fill in a blank cell, the more confident we are about the correctness). If many possibilities exists it will call the function recursively creating a recursive call for each scenario. If the grid is full then we have a solution and the grid is solvable. If the recursive calls stops before an end and we cannot find any other cell in which a number can be put then the grid is not solvable.
 
-![How backtracking works](https://github.com/brandtkilian/Sudoku-Assessment/blob/master/images/backtracking.gif "How backtracking works")
+![How backtracking works](https://github.com/brandtkilian/Sudoku-Assessment/blob/master/images/Sudoku_solved_by_bactracking.gif "How backtracking works")
 _source: https://commons.wikimedia.org/wiki/File:Sudoku_solved_by_bactracking.gif_
 
 All the code to check the state of a grid and check the solvability is carried in the `App\Sudoku.php` Eloquent model class.
