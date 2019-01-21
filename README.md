@@ -484,14 +484,14 @@ After the format of the grid checked (size and data types), the grid state is ch
 1. Check if any rule is violated (no duplicata in no row, column or subgrid 3x3)
 2. Check if the grid has a solution using backtracking.
 
-The [Backtracking algorithm](https://en.wikipedia.org/wiki/Sudoku_solving_algorithms) is an algorithm that acts like a bruteforce, given a grid state it will discover every numbers that can be fill in any blank cell without violate any rule. Starting from the cell with the minimum of possible moves (the less possible numbers can be fill in a blank cell, the more confident we are about the correctness). If many possibilities exists it will call the function recursively creating a recursive call for each scenario. If the grid is full then we have a solution and the grid is solvable. If the recursive calls stops before an end and we cannot find any other cell in which a number can be put then the grid is not solvable.
+The [Backtracking algorithm](https://en.wikipedia.org/wiki/Sudoku_solving_algorithms) is an algorithm that acts like a bruteforce, given a grid state it will discover every numbers that can be fill in any blank cell without violate any rule. Starting from the cell with the minimum of possible moves (the less possible numbers can be fill in a blank cell, the more confident we are about the correctness). If many possibilities exist it will call the function recursively creating a recursive call for each scenario. If the grid is full then we have a solution and the grid is solvable. If the recursive calls stops before an end and we cannot find any other cell in which a number can be put then the grid is not solvable.
 
 ![How backtracking works](https://github.com/brandtkilian/Sudoku-Assessment/blob/master/images/Sudoku_solved_by_bactracking.gif "How backtracking works")
 _source: https://commons.wikimedia.org/wiki/File:Sudoku_solved_by_bactracking.gif_
 
 All the code to check the state of a grid and check the solvability is carried in the `App\Sudoku.php` Eloquent model class.
 
-Sudokus are stored in Database in a Text field using JSON serialization. Using the `$casts` Laravel built-in attribute on Eloquent Model the serialization/Deserialization is automatic and the pipeline Backend/Frontend between PHP and JSON is smooth with no additional code required.$
+Sudokus are stored in Database in a Text field using JSON serialization. Using the `$casts` Laravel built-in attribute on Eloquent Model the serialization/Deserialization is automatic and the pipeline Backend/Frontend between PHP and JSON is smooth with no additional code required.
 
 #### Possible improvements
 * Let user specify the difficulty, store the difficulty in database
