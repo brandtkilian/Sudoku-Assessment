@@ -337,13 +337,13 @@ Example of response containing the solve records the user and the sudoku solved 
     "id":1,
     "user":
         {
-        "id":1,
-        "nick_name":"Kilian",
-        "created_at":null,
-        "updated_at":null
+            "id":1,
+            "nick_name":"Kilian",
+            "created_at":null,
+            "updated_at":null
         },
-        "sudoku":
-            {
+    "sudoku":
+        {
             "id":1,
             "user_id":1,
             "name":"Test sudoku",
