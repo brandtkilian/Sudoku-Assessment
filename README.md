@@ -245,6 +245,7 @@ Restricted to authenticated users.
 A middleware ensures a user can delete only his own sudokus.
 
 Deletes a sudoku given it's `{id}` (in the route)
+
 **Response `200 OK`:** Returns "1" for success "0" for failure
 
 ### `/api/user/sudokus/` [HTTP GET]
